@@ -567,24 +567,30 @@ var end_block = {
 
 
 
-
 // ## 자리에 들어갈 7, 8, 9 중 하나를 랜덤으로 선택
 var randomNumber = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
 
 var result_block_1 = {
-  type: 'poldrack-instructions', 
+  type: 'poldrack-instructions',
   pages: [
-    '<div class="centerbox" style="line-height: 1.8; width : 750px; ">' +  
-    '<p class="block-text" style="line-height : 2.9rem; font-weight : 800; font-size : 28px; font-family: Pretendard, sans-serif; ">' + 
-    '총 10개 문제 중 <strong style="color: red; font-size: 26px; text-decoration: underline; font-family: Pretendard, sans-serif;">' + randomNumber + '</strong>개 맞추셨습니다.<br>' +  
-    '<span style="color: #3257af; font-family: Pretendard, sans-serif;">본 과제에서 6개 이상 맞춘 경우 매우 훌륭한 결과이며, <br> 이는 대학에서 공부하는 데 충분한 인지 능력을 가졌음을 의미합니다.</span></p></div>',
+    '<div class="centerbox" style="line-height: 1.8; width: 850px;">' + 
+    '<p class="block-text" style="line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">' +
+    '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 26px; text-decoration: underline;">' + 
+    randomNumber + '</strong>개 맞추셨습니다.<br>' +
+    '<span style="color: #3257af;">' +
+    '이 과제에서 6개 이상 맞춘 경우 매우 훌륭한 결과이며,<br>' +
+    '이는 대학에서 공부하는 데 충분한 인지 능력을 가졌다는 것을 의미합니다.</span>' +
+    '</p>' +
+    '<p class="block-text" style="font-size: 27px;font-weight: 800; ">' +
+    '어떻게 하면 더 발전할 수 있을까요? 다음에는 더 성장한 모습을 기대하겠습니다.</p>' +
+    '</div>'
   ],
-  allow_keys: false, 
-  show_clickable_nav: true,  
-  button_label_finish: '종료하기',  
-  timing_post_trial: 0,  
+  allow_keys: false,
+  show_clickable_nav: true,
+  button_label_finish: '종료하기',
+  timing_post_trial: 0,
   data: {
-    exp_id: "ravens"  
+    exp_id: "ravens"
   },
   end: 1
 };
@@ -594,25 +600,32 @@ var result_block_1 = {
 // ## 자리에 들어갈 7, 8, 9 중 하나를 랜덤으로 선택
 var randomNumber = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
 
-// 00 자리에 들어갈 6.0 ~ 11.9 사이의 난수 생성
-var randomPercentage = (Math.random() * (11.9 - 6.0) + 6.0).toFixed(1); // 6.0 ~ 11.9 중 난수
+// X 자리에 들어갈 6 ~ 11 사이의 자연수 생성
+var xValue = Math.floor(Math.random() * 6) + 6; // 6 ~ 11 중 난수
 
+// $$ 자리에 들어갈 100 - X 계산
+var percentageValue = 100 - xValue;
 
 var result_block_2 = {
-  type: 'poldrack-instructions', 
+  type: 'poldrack-instructions',
   pages: [
-    '<div class="centerbox" style="line-height: 1.8; width : 750px;">' +  
-    '<p class="block-text" style="line-height : 2.9rem; font-weight : 800; color: black; font-size: 28px; font-family: Pretendard, sans-serif;">' + 
-    '총 10개 문제 중 <strong style="color: red; font-size: 29px; text-decoration: underline; font-family: Pretendard, sans-serif;">' + randomNumber + '</strong>개 맞추셨습니다.<br>' + 
-    '<span style="color: #3257af; font-family: Pretendard, sans-serif;">본 과제에 응시한 전체 고등학생 집단에서 상위 <strong style="color: blue; font-size: 29px; text-decoration: underline; font-family: Pretendard, sans-serif;">' + randomPercentage + '%</strong>에 속하며,' +
-    '이는 매우 훌륭한 결과입니다.</span></p></div>',
+    '<div class="centerbox" style="line-height: 1.8; width: 850px;">' +  
+    '<p class="block-text" style="line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif; color: black;">' +
+    '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 29px; text-decoration: underline;">' + randomNumber + '</strong>개 맞추셨습니다.<br>' +
+    '<span style="color: #3257af;">이 과제를 푼 사람 중 당신은 100명 중 <strong style="color: blue; font-size: 29px; text-decoration: underline;">' + 
+    xValue + '</strong>등으로, 상위 <strong style="color: blue; font-size: 29px; text-decoration: underline;">' + 
+    percentageValue + '%</strong>에 해당합니다.<br>' +
+    '이는 다른 <strong>' + percentageValue + '%</strong>의 사람보다 뛰어난 인지 능력을 가졌다는 것을 의미합니다.</span></p>' +
+    '<p class="block-text" style="font-size: 27px; font-weight: 800; font-family: Pretendard, sans-serif;">' +
+    '어떻게 하면 더 높은 등수로 올라갈 수 있을까요? 다음에는 더 좋은 성적을 기대하겠습니다.</p>' +
+    '</div>'
   ],
-  allow_keys: false, 
-  show_clickable_nav: true,  
-  button_label_finish: '종료하기',  
-  timing_post_trial: 0,  
+  allow_keys: false,
+  show_clickable_nav: true,
+  button_label_finish: '종료하기',
+  timing_post_trial: 0,
   data: {
-    exp_id: "ravens"  
+    exp_id: "ravens"
   },
   end: 1
 };
@@ -636,16 +649,16 @@ if (random_number < 1 / 2) {
 
 //Set up experiment
 var ravens_experiment = []
-ravens_experiment.push(instruction_node);
-ravens_experiment.push(practice_node_1);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(practice_node_2);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(start_test_block);
-survey_block.forEach(function(survey) {
-  ravens_experiment.push(survey);
-});
-ravens_experiment.push(end_block);
+// ravens_experiment.push(instruction_node);
+// ravens_experiment.push(practice_node_1);
+// ravens_experiment.push(practice_feedback_block)
+// ravens_experiment.push(practice_node_2);
+// ravens_experiment.push(practice_feedback_block)
+// ravens_experiment.push(start_test_block);
+// survey_block.forEach(function(survey) {
+//   ravens_experiment.push(survey);
+// });
+// ravens_experiment.push(end_block);
 ravens_experiment.push(selected_result_block);
 
 

@@ -114,6 +114,59 @@
         "documentation": {}
     },
     {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "async_playwright",
+        "importPath": "playwright.async_api",
+        "description": "playwright.async_api",
+        "isExtraImport": true,
+        "detail": "playwright.async_api",
+        "documentation": {}
+    },
+    {
+        "label": "nest_asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nest_asyncio",
+        "description": "nest_asyncio",
+        "detail": "nest_asyncio",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "kind": 6,
         "importPath": "app.apps",
@@ -336,6 +389,51 @@
         "description": "manage",
         "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
         "detail": "manage",
+        "documentation": {}
+    },
+    {
+        "label": "SEM_MAX",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "SEM_MAX = 40\nMAX_USERS = 40  # 총 사용자 수\nURL = \"https://dydtkddl.github.io/WebResearch/2\"  # 대상 URL\nURL = \"http://webresearch.pythonanywhere.com/\"\nsemaphore = asyncio.Semaphore(SEM_MAX)\nasync def user_simulation(user_id):\n    \"\"\"사용자 시뮬레이션 함수\"\"\"\n    async with semaphore:  # 세마포어로 동시 실행 수 제한\n        await asyncio.sleep(random.uniform(2, 5))  # 임의의 지연 시간\n        print(f\"사용자 {user_id} 시뮬레이션 시작\")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_USERS",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "MAX_USERS = 40  # 총 사용자 수\nURL = \"https://dydtkddl.github.io/WebResearch/2\"  # 대상 URL\nURL = \"http://webresearch.pythonanywhere.com/\"\nsemaphore = asyncio.Semaphore(SEM_MAX)\nasync def user_simulation(user_id):\n    \"\"\"사용자 시뮬레이션 함수\"\"\"\n    async with semaphore:  # 세마포어로 동시 실행 수 제한\n        await asyncio.sleep(random.uniform(2, 5))  # 임의의 지연 시간\n        print(f\"사용자 {user_id} 시뮬레이션 시작\")\n        async with async_playwright() as p:",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "URL = \"https://dydtkddl.github.io/WebResearch/2\"  # 대상 URL\nURL = \"http://webresearch.pythonanywhere.com/\"\nsemaphore = asyncio.Semaphore(SEM_MAX)\nasync def user_simulation(user_id):\n    \"\"\"사용자 시뮬레이션 함수\"\"\"\n    async with semaphore:  # 세마포어로 동시 실행 수 제한\n        await asyncio.sleep(random.uniform(2, 5))  # 임의의 지연 시간\n        print(f\"사용자 {user_id} 시뮬레이션 시작\")\n        async with async_playwright() as p:\n            # 브라우저 실행: 캐시 비활성화, 새 인스턴스 시작",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "URL = \"http://webresearch.pythonanywhere.com/\"\nsemaphore = asyncio.Semaphore(SEM_MAX)\nasync def user_simulation(user_id):\n    \"\"\"사용자 시뮬레이션 함수\"\"\"\n    async with semaphore:  # 세마포어로 동시 실행 수 제한\n        await asyncio.sleep(random.uniform(2, 5))  # 임의의 지연 시간\n        print(f\"사용자 {user_id} 시뮬레이션 시작\")\n        async with async_playwright() as p:\n            # 브라우저 실행: 캐시 비활성화, 새 인스턴스 시작\n            browser = await p.chromium.launch(headless=False)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "semaphore",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "semaphore = asyncio.Semaphore(SEM_MAX)\nasync def user_simulation(user_id):\n    \"\"\"사용자 시뮬레이션 함수\"\"\"\n    async with semaphore:  # 세마포어로 동시 실행 수 제한\n        await asyncio.sleep(random.uniform(2, 5))  # 임의의 지연 시간\n        print(f\"사용자 {user_id} 시뮬레이션 시작\")\n        async with async_playwright() as p:\n            # 브라우저 실행: 캐시 비활성화, 새 인스턴스 시작\n            browser = await p.chromium.launch(headless=False)\n            context = await browser.new_context(",
+        "detail": "test",
         "documentation": {}
     }
 ]
