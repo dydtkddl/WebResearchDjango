@@ -1,0 +1,121 @@
+.centerbox{
+    -webkit-order: 2;
+    order: 2;
+}
+
+.jspsych-instructions-nav {
+    -webkit-order: 3;
+    order: 3;
+}
+
+.sample_img {
+    margin: auto;
+    text-align: center
+}
+
+.display_stage{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center; -moz-box-align: center; /* OLD… */
+    -ms-flex-align: center; 
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+.center-content{
+	-webkit-order: 2;
+    order: 2;
+}
+
+#bottom_img{
+    height:132px;
+    width: 351px
+}
+
+img {
+    align: middle;
+}
+
+#jspsych-poldrack-survey-multi-choice-form {
+    -webkit-order: 1;
+    order: 1;
+    margin: 3vh 3vw auto 3vw;
+}
+
+.jspsych-survey-multi-choice-nav{
+    -webkit-order: 3;
+    order: 3;
+}
+
+.jspsych-poldrack-survey-multi-choice-opts {
+    font-size: 20px;
+}  
+.radio-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.radio-container {
+  text-align: center;
+  margin: 0 10px;
+}
+
+.radio-label {
+  display: block;
+  margin-top: -18px;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+}
+
+.custom-radio {
+  appearance: none;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.custom-radio:checked {
+  background-color: #007bff; /* 파란색 강조 */
+  border-color: #007bff;
+}
+
+.custom-radio:checked::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+  background: white;
+}
+.progress-text {
+  font-size: 18px; 
+  text-align: center; 
+  font-weight: 600; 
+  background-color: #f0f8ff; 
+  padding: 10px; 
+  border-radius: 10px;
+   color: #000; 
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.progress-text2 {
+  font-size: 18px; 
+  text-align: center; 
+  font-weight: 600; 
+  background-color: #eee1f8; 
+  padding: 10px; 
+  border-radius: 10px;
+   color: #000; 
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

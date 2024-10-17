@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실험 페이지</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jspsych.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/default_style.css' %}">
+  <script src = "{% static 'js/jspsych/jspsych.js' %}"></script>
+  <script src = "{% static 'js/jspsych/plugins/jspsych-text.js' %}"></script>
+  <script src = "{% static 'js/jspsych/poldrack_plugins/jspsych-poldrack-text.js' %}"></script>
+  <script src = "{% static 'js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js' %}"></script>
+  <!-- <script src = "static/js/jspsych/poldrack_plugins/jspsych-poldrack-survey-multi-choice.js",></script> -->
+  <script src = "{% static 'js/jspsych/poldrack_plugins/jspsych-survey-multi-choice.js' %}"></script>
+  <style>
+    /* @font-face를 통해 Pretendard-Regular 폰트를 정의 */
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    /* body 또는 특정 요소에 폰트 적용 */
+    body {
+        font-family: 'Pretendard-Regular', sans-serif;
+        font-size: 24px;
+        line-height: 2.3rem;
+    }
+
+    .custom-text {
+        font-family: 'Pretendard-Regular', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+    }
+</style>
+</head>
+
+<body>
+  <div id = "jspsych-target"></div>
+
+  <!-- 페이지 내용은 JavaScript로 추가되므로 body는 비워 둡니다 -->
+  <script>
+    // Django 템플릿에서 정적 파일 경로를 JavaScript 변수로 전달
+    const imagePath = "{% static 'images/' %}";
+  </script>
+  <script src="{% static 'js/experiment.js' %}">
+      </script>
+  
+</body>
+</html>
