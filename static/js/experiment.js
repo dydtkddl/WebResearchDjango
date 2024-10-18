@@ -612,9 +612,9 @@ var result_block_2 = {
     '<div class="centerbox" style="line-height: 1.8; width: 850px;">' +  
     '<p class="block-text" style="line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif; color: black;">' +
     '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 29px; text-decoration: underline;">' + randomNumber + '</strong>개 맞추셨습니다.<br>' +
-    '<span style="color: #3257af;">이 과제를 푼 사람 중 당신은 100명 중 <strong style="color: blue; font-size: 29px; text-decoration: underline;">' + 
-    xValue + '</strong>등으로, 상위 <strong style="color: blue; font-size: 29px; text-decoration: underline;">' + 
-    percentageValue + '%</strong>에 해당합니다.<br>' +
+    '<span style="color: #3257af;">이 과제를 푼 사람 중 당신은 100명 중 <strong style="color:  #3257af; font-size: 29px; text-decoration: underline;">' + 
+    xValue + '</strong>등으로, 상위 <strong style="color:  #3257af; font-size: 29px; text-decoration: underline;">' + 
+    (100 - percentageValue) + '%</strong>에 해당합니다.<br>' +
     '이는 다른 <strong>' + percentageValue + '%</strong>의 사람보다 뛰어난 인지 능력을 가졌다는 것을 의미합니다.</span></p>' +
     '<p class="block-text" style="font-size: 27px; font-weight: 800; font-family: Pretendard, sans-serif;">' +
     '어떻게 하면 더 높은 등수로 올라갈 수 있을까요? 다음에는 더 좋은 성적을 기대하겠습니다.</p>' +
@@ -649,16 +649,16 @@ if (random_number < 1 / 2) {
 
 //Set up experiment
 var ravens_experiment = []
-ravens_experiment.push(instruction_node);
-ravens_experiment.push(practice_node_1);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(practice_node_2);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(start_test_block);
-survey_block.forEach(function(survey) {
-  ravens_experiment.push(survey);
-});
-ravens_experiment.push(end_block);
+// ravens_experiment.push(instruction_node);
+// ravens_experiment.push(practice_node_1);
+// ravens_experiment.push(practice_feedback_block)
+// ravens_experiment.push(practice_node_2);
+// ravens_experiment.push(practice_feedback_block)
+// ravens_experiment.push(start_test_block);
+// survey_block.forEach(function(survey) {
+//   ravens_experiment.push(survey);
+// });
+// ravens_experiment.push(end_block);
 ravens_experiment.push(selected_result_block);
 
 
