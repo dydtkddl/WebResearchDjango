@@ -292,7 +292,7 @@ var score_scale = [
 var feedback_instruct_text =
   '<br><div style="text-align: center; font-size: 26px; font-weight: 600; line-height: 2.5rem; color: #333; padding: 20px;">' + 
   '연구에 참여해 주셔서 감사합니다.<br><br>' + 
-  '<span style ="font-size : 32px; font-weight : 400" >계속하려면 <strong style="color: #007BFF; font-size: 29px;">enter</strong> 키를 누르세요.</span>' +
+  '<span style ="font-size : 32px; font-weight : 400" >계속하려면 <strong style="color: #3257af; font-size: 29px;">enter</strong> 키를 누르세요.</span>' +
   '</div>';
 
 var feedback_instruct_block = {
@@ -312,7 +312,7 @@ var instructions_block = {
     '<div class="centerbox">' + 
     `<p class="block-text" style="font-size: 24px; font-weight: 400; line-height: 2.3rem;">이 테스트는 <strong>관찰력</strong>, <strong>집중력</strong>, <strong>사고력</strong>을 평가하는 시험이며, ${bottom_img.length}개 문제로 이루어져 있습니다.</p>` + 
     '<p class="block-text" style="font-size: 24px; font-weight: 400; line-height: 2.3rem;">각 문제에는 일정한 패턴을 가진 그림이 제시되어 있습니다. 여러분의 역할은 패턴을 파악하여 빈칸을 완성하는 것입니다. 8가지 선택지 중에서 빈칸에 들어갈 그림으로 적절한 것을 고르세요.</p>' + 
-    '<p class="block-text" style="font-size: 24px; font-weight: 400; line-height: 2.3rem; color: #007bff;">‘다음’ 버튼을 누르면 예시 문제가 제시됩니다.</p>' + 
+    '<p class="block-text" style="font-size: 24px; font-weight: 400; line-height: 2.3rem; color: #3257af;">‘다음’ 버튼을 누르면 예시 문제가 제시됩니다.</p>' + 
     '</div>',
 
     // 두 번째 페이지: 예시 문제 설명
@@ -327,7 +327,7 @@ var instructions_block = {
     // 세 번째 페이지: 연습 문제 안내
     '<div class="centerbox" >'+
   '<p class="center-block-text" style="font-size: 24px; font-weight: 400; line-height: 2.3rem;">'
-    +'이제 다음 페이지에서는 <strong style="font-size: 26px; color: #007BFF;">연습 문제 2개</strong>를 풀어보겠습니다. <br><br>'
+    +'이제 다음 페이지에서는 <strong style="font-size: 26px; color: #3257af;">연습 문제 2개</strong>를 풀어보겠습니다. <br><br>'
     +'연습 문제에는 <strong style="color: #28A745;">정답/오답 여부</strong>가 제시되며, <strong style="color: #28A745;">다시 풀 수</strong> 있습니다.<br><br>'
     +'<span style="font-weight: 600; font-size: 22px;">실제 문제</span>에는 정답/오답 여부가 <span style="text-decoration: underline;">제시되지 않습니다.</span></p></div>'
 
@@ -357,12 +357,12 @@ var instruction_node = {
       feedback_instruct_text = 
         '<p style="font-size: 24px; font-weight: 400; line-height: 2.3rem; color: #FF5733;">시간을 충분히 가지고 읽어보세요.</p>' + 
         '<p style="font-size: 24px; font-weight: 400; line-height: 2.3rem;">설명의 내용을 이해하고 넘어가길 바랍니다.</p>' +
-        '<p style="font-size: 24px; font-weight: 600; line-height: 2.3rem;">계속하려면 <strong style="color: #007bff;">enter</strong> 키를 누르세요.</p>';
+        '<p style="font-size: 24px; font-weight: 600; line-height: 2.3rem;">계속하려면 <strong style="color: #3257af;">enter</strong> 키를 누르세요.</p>';
       return true;
     } else if (sumInstructTime > instructTimeThresh * 1000) {
       feedback_instruct_text = 
         '<p style="font-size: 24px; font-weight: 400; line-height: 2.3rem; color: #28A745;">설명이 종료되었습니다.</p>' +
-        '<p style="font-size: 24px; font-weight: 600; line-height: 2.3rem;">계속하려면 <strong style="color: #007bff;">enter</strong> 키를 누르세요.</p>';
+        '<p style="font-size: 24px; font-weight: 600; line-height: 2.3rem;">계속하려면 <strong style="color: #3257af;">enter</strong> 키를 누르세요.</p>';
       return false;
     }
   }
@@ -533,9 +533,13 @@ var start_test_block = {
 };
 var total_questions = all_pages.length;  // 총 문제 수
 var current_question = 0;  // 현재 진행 중인 문제 번호
-var survey_block = [];
+var survey_block1 = [];
+var survey_block2 = [];
+var survey_block3 = [];
+
+// 각 문제를 해당 survey_block에 할당
 for (let i = 0; i < all_pages.length; i++) {
-  survey_block.push({
+  let block = {
     type: "poldrack-survey-multi-choice",
     exp_id: "ravens",
     horizontal: true,
@@ -548,12 +552,21 @@ for (let i = 0; i < all_pages.length; i++) {
     allow_backward: true,
     required: fillArray([true], 18),  // 필요시 수정
     timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
-  });
+  };
+
+  // 문제 번호에 따라 각 블록에 분배
+  if (i < 4) {
+    survey_block1.push(block);  // 1~4번째 문제
+  } else if (i >= 4 && i < 7) {
+    survey_block2.push(block);  // 5~7번째 문제
+  } else {
+    survey_block3.push(block);  // 8~10번째 문제
+  }
 }
 
 var end_block = {
   type: 'poldrack-text',
-  text: '<div class = centerbox><p class = center-block-text>수고하셨습니다. 모든 문제를 다 푸셨습니다.</p><p class = center-block-text>계속하려면 <strong>enter</strong> 키를 누르세요.</p></div>',
+  text: '<div class = centerbox><p class = center-block-text style = " line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">수고하셨습니다. 모든 문제를 다 푸셨습니다.</p><p class = center-block-text style = " line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">계속하려면 <strong>enter</strong> 키를 누르세요.</p></div>',
   cont_key: [13],
   data: {
     exp_id: "ravens"
@@ -564,11 +577,78 @@ var end_block = {
 
 
 // 피드백 화면 1,2 중 랜덤으로 하나 제시
+// 14 또는 15 중 하나를 랜덤으로 선택
+var randomNumber_1 = Math.random() < 0.5 ? 14 : 15;
+
+// 두 템플릿 블록 정의
+var template1_1 = {
+  type: 'poldrack-instructions',
+  pages: [
+    '<div class="centerbox">' +
+    '<p class="block-text" style="color: black; line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">' +
+    '지금까지 잘 하고 있습니다.<br>당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력</span>을 발전시키기 위해 남은 문제도 최선을 다해 주세요.' +
+    '</p>' +
+    '</div>'
+  ],
+  show_clickable_nav: true,
+  button_label_finish: '계속하기',
+  timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+};
+
+var template1_2 = {
+  type: 'poldrack-instructions',
+  pages: [
+    '<div class="centerbox">' +
+    `<p class="block-text" style="color: black; line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">당신은 지금 다른 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">${randomNumber_1}%</span>의 사람보다 앞서고 있습니다.<br>` +
+    '더 높은 등수로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.' +
+    '</p>' +
+    '</div>'
+  ],
+  show_clickable_nav: true,
+  button_label_finish: '계속하기',
+   timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+};
+
+
+
+
+////////////////////////////////
+
+// 12 또는 13 중 하나를 랜덤으로 선택
+var randomNumber2_2 = Math.random() < 0.5 ? 12 : 13;
+
+// 템플릿 1 정의
+var template2_1 = {
+  type: 'poldrack-instructions',
+  pages: [
+    '<div class="centerbox">' +
+    '<p class="block-text" style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color:black;">문제 푸는 실력이 성장하고 있습니다!<br>' +
+    '당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력</span>을 발전시키기 위해 남은 문제도 최선을 다해 주세요.</p>' +
+    '</div>'
+  ],
+  show_clickable_nav: true,
+  button_label_finish: '계속하기',
+  timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+};
+
+// 템플릿 2 정의 (12 또는 13이 00%에 들어감)
+var template2_2 = {
+  type: 'poldrack-instructions',
+  pages: [
+    '<div class="centerbox">' +
+    `<p class="block-text" style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: black;">당신은 지금 다른 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">${randomNumber2_2}%</span>의 사람보다 앞서고 있습니다.<br>` +
+    '더 높은 등수로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.</p>' +
+    '</div>'
+  ],
+  show_clickable_nav: true,
+  button_label_finish: '계속하기',
+  timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+};
 
 
 
 // ## 자리에 들어갈 7, 8, 9 중 하나를 랜덤으로 선택
-var randomNumber = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
+var randomNumber3_1 = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
 
 var result_block_1 = {
   type: 'poldrack-instructions',
@@ -576,7 +656,7 @@ var result_block_1 = {
     '<div class="centerbox" style="line-height: 1.8; width: 850px;">' + 
     '<p class="block-text" style="line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">' +
     '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 26px; text-decoration: underline;">' + 
-    randomNumber + '</strong>개 맞추셨습니다.<br>' +
+    randomNumber3_1 + '</strong>개 맞추셨습니다.<br>' +
     '<span style="color: #3257af;">' +
     '이 과제에서 6개 이상 맞춘 경우 매우 훌륭한 결과이며,<br>' +
     '이는 대학에서 공부하는 데 충분한 인지 능력을 가졌다는 것을 의미합니다.</span>' +
@@ -593,29 +673,30 @@ var result_block_1 = {
     exp_id: "ravens"
   },
   end: 1
+  
 };
 
 
 
 // ## 자리에 들어갈 7, 8, 9 중 하나를 랜덤으로 선택
-var randomNumber = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
+var randomNumber3_2 = Math.floor(Math.random() * 3) + 7; // 7, 8, 9 중 하나 선택
 
 // X 자리에 들어갈 6 ~ 11 사이의 자연수 생성
-var xValue = Math.floor(Math.random() * 6) + 6; // 6 ~ 11 중 난수
+var xValue3_2 = Math.floor(Math.random() * 6) + 6; // 6 ~ 11 중 난수
 
 // $$ 자리에 들어갈 100 - X 계산
-var percentageValue = 100 - xValue;
+var percentageValue3_2= 100 - xValue3_2;
 
 var result_block_2 = {
   type: 'poldrack-instructions',
   pages: [
     '<div class="centerbox" style="line-height: 1.8; width: 850px;">' +  
     '<p class="block-text" style="line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif; color: black;">' +
-    '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 29px; text-decoration: underline;">' + randomNumber + '</strong>개 맞추셨습니다.<br>' +
+    '축하합니다. 총 10개 문제 중 <strong style="color: red; font-size: 29px; text-decoration: underline;">' + randomNumber3_2 + '</strong>개 맞추셨습니다.<br>' +
     '<span style="color: #3257af;">이 과제를 푼 사람 중 당신은 100명 중 <strong style="color:  #3257af; font-size: 29px; text-decoration: underline;">' + 
-    xValue + '</strong>등으로, 상위 <strong style="color:  #3257af; font-size: 29px; text-decoration: underline;">' + 
-    (100 - percentageValue) + '%</strong>에 해당합니다.<br>' +
-    '이는 다른 <strong>' + percentageValue + '%</strong>의 사람보다 뛰어난 인지 능력을 가졌다는 것을 의미합니다.</span></p>' +
+    xValue3_2 + '</strong>등으로, 상위 <strong style="color:  #3257af; font-size: 29px; text-decoration: underline;">' + 
+    (100 - percentageValue3_2) + '%</strong>에 해당합니다.<br>' +
+    '이는 다른 <strong>' + percentageValue3_2 + '%</strong>의 사람보다 뛰어난 인지 능력을 가졌다는 것을 의미합니다.</span></p>' +
     '<p class="block-text" style="font-size: 27px; font-weight: 800; font-family: Pretendard, sans-serif;">' +
     '어떻게 하면 더 높은 등수로 올라갈 수 있을까요? 다음에는 더 좋은 성적을 기대하겠습니다.</p>' +
     '</div>'
@@ -633,33 +714,56 @@ var result_block_2 = {
 
 
 
-// 세 개의 결과 블록 중 하나를 랜덤하게 선택
-var selected_result_block;
-
-var random_number = Math.random(); // 0 ~ 1 사이의 난수 생성
-
-if (random_number < 1 / 2) {
-  selected_result_block = result_block_1;  // 1/2 확률로 result_block_1 선택
-} else {
-  selected_result_block = result_block_2;  // 1/2 확률로 result_block_2 선택
-} 
 
 // 선택된 결과 블록을 jsPsych 실험 타임라인에 추가
 
 
 //Set up experiment
 var ravens_experiment = []
-ravens_experiment.push(instruction_node);
-ravens_experiment.push(practice_node_1);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(practice_node_2);
-ravens_experiment.push(practice_feedback_block)
-ravens_experiment.push(start_test_block);
-survey_block.forEach(function(survey) {
-  ravens_experiment.push(survey);
-});
-ravens_experiment.push(end_block);
-ravens_experiment.push(selected_result_block);
+// 무작위로 템플릿 선택
+var selected_template = Math.random() 
+if (selected_template < 0.5){
+  ravens_experiment.push(instruction_node);
+  ravens_experiment.push(practice_node_1);
+  ravens_experiment.push(practice_feedback_block)
+  ravens_experiment.push(practice_node_2);
+  ravens_experiment.push(practice_feedback_block)
+  ravens_experiment.push(start_test_block);
+  survey_block1.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(template1_1);
+  survey_block2.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(template2_1);
+  survey_block3.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(end_block);
+  ravens_experiment.push(result_block_1);
+  
+}else{
+  ravens_experiment.push(instruction_node);
+  ravens_experiment.push(practice_node_1);
+  ravens_experiment.push(practice_feedback_block)
+  ravens_experiment.push(practice_node_2);
+  ravens_experiment.push(practice_feedback_block)
+  ravens_experiment.push(start_test_block);
+  survey_block1.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(template1_2);
+  survey_block2.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(template2_2);
+  survey_block3.forEach(function(survey) {
+    ravens_experiment.push(survey);
+  });
+  ravens_experiment.push(end_block);
+  ravens_experiment.push(result_block_2);
+}
 
 
 jsPsych.init({

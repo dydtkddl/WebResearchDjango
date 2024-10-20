@@ -39,15 +39,16 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
       
       console.log(trial.pages.length - 1)
       console.log(current_page)
+      console.log(trial.button_label_finish)
       if (trial.show_clickable_nav) {
         var nav_html = "<div class='jspsych-instructions-nav' style = 'font-weight : 800; font-family: Pretendard, sans-serif;'>";
-        if (trial.pages.length == 1) {
-          if (trial.end == 1 ){
-            nav_html += "<button id='jspsych-instructions-next-fake'>종료 하기</button>"
-          }else{
-          nav_html += "<button id='jspsych-instructions-next'>종료 하기</button>"
-          }
-        } else {
+        // if (trial.pages.length == 1) {
+        //   if (trial.end == 1 ){
+        //     nav_html += "<button id='jspsych-instructions-next-fake'>종료 하기</button>"
+        //   }else{
+        //   nav_html += "<button id='jspsych-instructions-next'>종료 하기</button>"
+        //   }
+        // } else {
           if (current_page == 0) {
           
             nav_html += "<button id='jspsych-instructions-next' style = 'width :250px' >다음 ></button>"
@@ -66,7 +67,7 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
               nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
             }
             nav_html += "<button id='jspsych-instructions-next' style = 'width :250px' >다음> </button>"
-          }
+          // }
         }
         nav_html += "</div>"
 
