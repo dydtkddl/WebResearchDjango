@@ -586,7 +586,7 @@ var template1_1 = {
   pages: [
     '<div class="centerbox">' +
     '<p class="block-text" style="color: black; line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">' +
-    '지금까지 잘 하고 있습니다.<br>당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력</span>을 발전시키기 위해 남은 문제도 최선을 다해 주세요.' +
+    '지금까지 잘 하고 있습니다.<br>당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력을 발전</span>시키기 위해 남은 문제도 최선을 다해 주세요.' +
     '</p>' +
     '</div>'
   ],
@@ -599,8 +599,9 @@ var template1_2 = {
   type: 'poldrack-instructions',
   pages: [
     '<div class="centerbox">' +
-    `<p class="block-text" style="color: black; line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">당신은 지금 다른 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">${randomNumber_1}%</span>의 사람보다 앞서고 있습니다.<br>` +
-    '더 높은 등수로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.' +
+    `<p class="block-text" style="color: black; line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;">당신은 지금 상위 ${randomNumber_1}%로 
+    ${100-randomNumber_1}%의 사람보다 앞서고 있습니다.<br>` +
+    '<span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">더 높은 등수</span>로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.' +
     '</p>' +
     '</div>'
   ],
@@ -623,7 +624,7 @@ var template2_1 = {
   pages: [
     '<div class="centerbox">' +
     '<p class="block-text" style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color:black;">문제 푸는 실력이 성장하고 있습니다!<br>' +
-    '당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력</span>을 발전시키기 위해 남은 문제도 최선을 다해 주세요.</p>' +
+    '당신의 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">인지 능력을 발전</span>시키기 위해 남은 문제도 최선을 다해 주세요.</p>' +
     '</div>'
   ],
   show_clickable_nav: true,
@@ -636,8 +637,9 @@ var template2_2 = {
   type: 'poldrack-instructions',
   pages: [
     '<div class="centerbox">' +
-    `<p class="block-text" style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: black;">당신은 지금 다른 <span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">${randomNumber2_2}%</span>의 사람보다 앞서고 있습니다.<br>` +
-    '더 높은 등수로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.</p>' +
+    `<p class="block-text" style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: 
+    Pretendard, sans-serif;color: black;">당신은 지금 상위 ${randomNumber2_2}%로 ${100-randomNumber2_2}%의 사람보다 앞서고 있습니다.<br>` +
+    '<span style=" line-height: 2.9rem; font-weight: 800; font-size: 28px; font-family: Pretendard, sans-serif;color: #3257af;">더 높은 등수</span>로 올라갈 수 있도록 남은 문제도 최선을 다해 주세요.</p>' +
     '</div>'
   ],
   show_clickable_nav: true,
