@@ -22,6 +22,7 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
     trial.allow_keys = (typeof trial.allow_keys === 'undefined') ? true : trial.allow_keys;
     trial.show_clickable_nav = (typeof trial.show_clickable_nav === 'undefined') ? false :
       trial.show_clickable_nav;
+      trial.last_page_next = (typeof trial.last_page_next === 'undefined') ? false : trial.last_page_next
     // if any trial variables are functions
     // this evaluates the function and replaces
     // it with the output of the function
@@ -49,24 +50,16 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
         //   nav_html += "<button id='jspsych-instructions-next'>종료 하기</button>"
         //   }
         // } else {
-          if (current_page == 0) {
-          
-            nav_html += "<button id='jspsych-instructions-next' style = 'width :250px' >다음 ></button>"
-          } else if (current_page == trial.pages.length - 1) {
-            if (trial.allow_backward) {
-              nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
-            }
-            if (trial.button_label_finish === "undefined"){
-              nav_html += "<button id='jspsych-instructions-next'>종료 하기</button>"
-            }
-            else{
-              nav_html += "<button id='jspsych-instructions-next'>연습 시작하기</button>"
-            }
+        if (current_page == trial.pages.length - 1) {
+              if (trial.allow_backward) {
+                nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
+              }
+                nav_html += `<button id='jspsych-instructions-next'>${trial.last_page_next}</button>`
           } else {
             if (trial.allow_backward) {
               nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
             }
-            nav_html += "<button id='jspsych-instructions-next' style = 'width :250px' >다음> </button>"
+            nav_html += `<button id='jspsych-instructions-next' style = 'width :250px' >${trial.button_label_finish}</button>`
           // }
         }
         nav_html += "</div>"

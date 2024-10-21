@@ -338,7 +338,8 @@ var instructions_block = {
   data: {
     exp_id: "ravens"
   },
-  button_label_finish: '다음', // '종료' 버튼의 레이블을 '다음'으로 변경
+  button_label_finish: '다음 >',
+  last_page_next : "연습 시작", 
   end : 0
 
 };
@@ -592,7 +593,9 @@ var template1_1 = {
   ],
   show_clickable_nav: true,
   button_label_finish: '계속하기',
+  last_page_next : "계속하기",
   timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+  allow_backward : false
 };
 
 var template1_2 = {
@@ -607,7 +610,9 @@ var template1_2 = {
   ],
   show_clickable_nav: true,
   button_label_finish: '계속하기',
+  last_page_next : "계속하기",
    timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+   allow_backward : false
 };
 
 
@@ -629,7 +634,9 @@ var template2_1 = {
   ],
   show_clickable_nav: true,
   button_label_finish: '계속하기',
+  last_page_next : "계속하기",
   timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+  allow_backward : false
 };
 
 // 템플릿 2 정의 (12 또는 13이 00%에 들어감)
@@ -644,7 +651,9 @@ var template2_2 = {
   ],
   show_clickable_nav: true,
   button_label_finish: '계속하기',
+  last_page_next : "계속하기",
   timing_post_trial: 100,  // 1초 대기 후 다음 트라이얼로 넘어감
+  allow_backward : false
 };
 
 
@@ -670,11 +679,13 @@ var result_block_1 = {
   allow_keys: false,
   show_clickable_nav: true,
   button_label_finish: '종료하기',
+  last_page_next : "종료하기",
   timing_post_trial: 0,
   data: {
     exp_id: "ravens"
   },
-  end: 1
+  end: 1,
+  allow_backward : false
   
 };
 
@@ -706,11 +717,13 @@ var result_block_2 = {
   allow_keys: false,
   show_clickable_nav: true,
   button_label_finish: '종료하기',
+  last_page_next : "종료하기",
   timing_post_trial: 0,
   data: {
     exp_id: "ravens"
   },
-  end: 1
+  end: 1,
+  allow_backward : false
 };
 
 
