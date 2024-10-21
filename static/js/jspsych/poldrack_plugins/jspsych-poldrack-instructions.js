@@ -23,6 +23,7 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
     trial.show_clickable_nav = (typeof trial.show_clickable_nav === 'undefined') ? false :
       trial.show_clickable_nav;
       trial.last_page_next = (typeof trial.last_page_next === 'undefined') ? false : trial.last_page_next
+      trial.final = (typeof trial.final === 'undefined') ? false : trial.final
     // if any trial variables are functions
     // this evaluates the function and replaces
     // it with the output of the function
@@ -51,11 +52,19 @@ jsPsych.plugins['poldrack-instructions'] = (function() {
         //   }
         // } else {
         if (current_page == trial.pages.length - 1) {
+          if (trial.final){
+            if (trial.allow_backward) {
+              nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
+            }
+              nav_html += `<button id='final_button' style = "font-weight : 600">${trial.last_page_next}</button>`
+              }
+          else{
               if (trial.allow_backward) {
                 nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
               }
                 nav_html += `<button id='jspsych-instructions-next'>${trial.last_page_next}</button>`
-          } else {
+            }}
+          else {
             if (trial.allow_backward) {
               nav_html += "<button id='jspsych-instructions-back'style = 'width :250px'>< 이전</button>";
             }

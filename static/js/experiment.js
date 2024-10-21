@@ -685,7 +685,9 @@ var result_block_1 = {
     exp_id: "ravens"
   },
   end: 1,
-  allow_backward : false
+  allow_backward : false,
+  final : true
+
   
 };
 
@@ -723,7 +725,8 @@ var result_block_2 = {
     exp_id: "ravens"
   },
   end: 1,
-  allow_backward : false
+  allow_backward : false,
+  final : true
 };
 
 
